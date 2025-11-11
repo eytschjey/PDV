@@ -8,17 +8,20 @@ const char *broker ="";
 const char *topic ="";
 const char *username ="";
 const char *mqtt_password ="";
-const int port =;
+const int port = 8883;
 const int Taster1 = 36;
-const int time1 = 0;
-const int time2 = 0;
-const int buttonState = 0;
-const int lastButtonState = 0;
-const unsigned long pressTime = 0;
-const unsigned long releaseTime = 0;
-const unsigned long duration = 0;
-const long Timeout = 500;
-const long Timer = 0;
+int time1 = 0;
+int time2 = 0;
+int buttonState = 0;
+int lastButtonState = 0;
+long pressTime = 0;
+long releaseTime = 0;
+long duration = 0;
+long Timeout = 500;
+long Timer = 0;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
 
 void setup() {
   // put your setup code here, to run once:
@@ -30,7 +33,6 @@ void setup() {
     Serial.println("Connecting to WiFi..");
   }
   client.setServer(broker, port);
-  client.setCallback(callback);
   while (!client.connected())
   {
     String client_id = "esp32-client-";
@@ -46,6 +48,7 @@ void setup() {
       Serial.print(client.state());
       delay(2000);
     }
+  }
 }
 
 void loop() {
