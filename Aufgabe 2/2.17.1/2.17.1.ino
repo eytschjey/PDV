@@ -1,14 +1,19 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-const char *ssid ="";
-const char *password ="";
+// WLAN im SSTS Labor
+const char *ssid ="ITBahn";
+const char *password ="geheim007";
 
-const char *broker ="";
-const char *topic ="";
+const char *broker ="141.72.191.235";
+const char *topic ="hello";
+const int port = 1883;
+
+// leer lassen fuer kein username und kein password (STTS Labor)
 const char *username ="";
 const char *mqtt_password ="";
-const int port = 8883;
+
+// Initialisierung von Variablen
 const int Taster1 = 36;
 int time1 = 0;
 int time2 = 0;
@@ -24,7 +29,7 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 void setup() {
-  // put your setup code here, to run once:
+  // WLAN Verbindung aufbauen
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
@@ -32,6 +37,9 @@ void setup() {
     delay(500);
     Serial.println("Connecting to WiFi..");
   }
+  Serial.println("Connected to the WiFi network");
+
+  // MQTT Verbindung aufbauen
   client.setServer(broker, port);
   while (!client.connected())
   {
@@ -49,13 +57,16 @@ void setup() {
       delay(2000);
     }
   }
+  // Taster 1 als Input
   pinMode(Taster1,INPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // Messung des Tasterzustands an Pin 36
   buttonState = digitalRead(36);
   time1 = 0;
+
+  // Messung von Druckdauer und Intervall
   if (buttonState != lastButtonState)
   {
     if (buttonState == 0)
@@ -69,12 +80,16 @@ void loop() {
     }
     lastButtonState = buttonState;
   }
+
+  // Sende MQTT Nachricht bei Tastendruck
   while (buttonState == lastButtonState)
   {
+    // Kurz- und gedrückt unterscheiden
     if (pressTime <= 100)
     {
       client.publish(topic,"Hello STTS World");
     }
+    // Bei gedrücktem Taster alle 500ms Nachricht senden
     else
     {
       if (millis() >= Timeout + Timer)

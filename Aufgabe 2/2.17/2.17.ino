@@ -7,9 +7,9 @@ const char* WIFI_SSID = "iPhone";
 const char* WIFI_PASS = "juergen81";
 
 // --- MQTT über Domain + TLS ---
-const char*    MQTT_HOST = "mqtt.janhiebert.de";  // <- deine Domain
+const char*    MQTT_HOST = "mqtt.janhiebert.de";  // meine Domain
 const uint16_t MQTT_PORT = 8883;                  // TLS-Port
-const char*    MQTT_USER = "esp32";               // dein EMQX-User
+const char*    MQTT_USER = "esp32";               // EMQX-User
 const char*    MQTT_PASS = "supersicherespasswort!";
 const char*    CLIENT_ID = "esp32-jan-01";        // pro Gerät einzigartig
 
