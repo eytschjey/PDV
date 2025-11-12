@@ -1,9 +1,19 @@
+// Aufgabe 2.13
+/*
+Schreiben Sie ein Programm, das den Text "Hello STTS Arduino World"
+über die serielle Schnittstelle ausgibt.
+
+Frage 3:Woran erkennen Sie, dass gerade ein neues Programm hochgeladen wird?
+Am Blinken der internen LED während des Uploads.
+
+*/
+
+// Initialisierung des seriellen Monitors
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
 }
 
+// Ausgabe von Hello World im Loop
 void loop() {
-  // put your main code here, to run repeatedly:
-  Serial.write("Hello STTS Arduino World");
+  Serial.println("Hello STTS Arduino World");
 }
