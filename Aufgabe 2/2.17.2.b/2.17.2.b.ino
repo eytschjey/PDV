@@ -128,16 +128,18 @@ void loop() {
   // Anzahl der gedrueckten Taster bestimmen
   anzahl = val1 + val2 +val3;
 
-  // wenn neuer und alter state nicht ubereinstimmen, Nachricht senden
+  // fuer Taster 1: wenn neuer und alter state nicht ubereinstimmen, Nachricht senden
   if (state1 != val1)
   {
     if(client.publish(topic,"Gruppe K") != 1)
     {
+      // Falls fehlgeschlagen, failed zaehler erhoehen
       failed++;
     }
     used1 = 1;
   }
 
+// gleiches Vorgehen fuer Taster 2
   if (state2 != val2)
   {
     if(client.publish(topic,String(anzahl).c_str()) != 1)
@@ -146,7 +148,8 @@ void loop() {
     }
     used2 = 1;
   }
-  
+
+  // Taster 3: Sende eine Nachricht mit der Liste der gedrueckten Taster bei Zustandsaenderung
   if (state3 != val3)
   {
     if(val1 == 1)
@@ -183,6 +186,8 @@ void loop() {
     }
     used3 = 1;
   }
+
+  // Wenn eine Nachricht gesendet wurde (used), 2 Sekunden warten bevor neue Nachricht gesendet wird
   if(used1 == 1 || used2 == 1 || used3 == 1)
   {
     delay(2000);
@@ -211,10 +216,13 @@ void loop() {
       used3 == 0;
     }
   }
+  
+  // failed zaehlt die fehlgeschlagenen Sendeversuche, wenn ungleich 0, alle LEDs mit 2Hz rot blinken lassen
   if (failed != 0)
   {
     while(1)
     {
+      // Timeout und Timer fuer Blinkfrequenz (2Hz)
       if (millis() >= Timeout + Timer)
       {
         Timer = millis();
