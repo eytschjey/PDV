@@ -1,14 +1,41 @@
+/* 
+Aufgabe 2.17.2b: Senden von MQTT Nachrichten bei Tastendruck
+
+- Wenn sich der Zustand eines Schalters ändert, soll immer eine Nachricht 
+geschickt werden.
+
+- 2 Sekunden nach einer gesendeten Nachricht soll erneut eine neue Nachricht 
+geschickt werden 
+
+- Der Inhalt der Nachricht setzt sich abhängig von den Tastern T1, T2 und T3 
+aus den folgenden Bestandteilen zusammen:  
+1. Gruppennamen 
+2. Anzahl der gedrückten Taster 
+3. Liste der gedrückten Taster (z.B bei gedrücktem Schalter T1 und T3 
+die Liste „[T1, T2]“ 
+
+- Wenn das Senden der Nachricht fehlschlägt sollen alle LEDs der Boards mit 2 
+Hz rot blinken!  
+
+*/
+
+
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-const char *ssid ="";
-const char *password ="";
+// WLAN im SSTS Labor
+const char *ssid ="ITBahn";
+const char *password ="geheim007";
 
-const char *broker ="";
-const char *topic ="";
+const char *broker ="141.72.191.235";
+const char *topic ="hello";
+const int port = 1883;
+
+// leer lassen fuer kein username und kein password (STTS Labor)
 const char *username ="";
 const char *mqtt_password ="";
-const int port = 8883;
+
+// Initialisierung der GPIO Pins für Taster und LEDs
 const int Taster1 = 36;
 const int Taster2 = 39;
 const int Taster3 = 34;
@@ -18,6 +45,8 @@ const int LED2_1 = 32;
 const int LED2_2 = 33;
 const int LED3_1 = 4;
 const int LED3_2 = 2;
+
+// Initialisierung von Variablen
 int state1 = 0;
 int state2 = 0;
 int state3 = 0;
@@ -38,7 +67,7 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 void setup() {
-  // put your setup code here, to run once:
+  // WLAN Verbindung aufbauen
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
@@ -46,6 +75,9 @@ void setup() {
     delay(500);
     Serial.println("Connecting to WiFi..");
   }
+  Serial.println("Connected to the WiFi network");
+
+  // MQTT Verbindung aufbauen
   client.setServer(broker, port);
   while (!client.connected())
   {
@@ -63,6 +95,8 @@ void setup() {
       delay(2000);
     }
   }
+
+  // Taster als Input und LEDs als Output definieren
   pinMode(Taster1,INPUT);
   pinMode(Taster2,INPUT);
   pinMode(Taster3,INPUT);
@@ -78,18 +112,23 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  // string Taster zuruecksetzen
   for(int i = 0; i<3; i++)
   {
     Taster = " ";
   }
+
+  // alter state in neue Variable speichern und neuen Tasterzustand auslesen
   state1 = val1;
   state2 = val2;
   state3 = val3;
   val1 = digitalRead(Taster1);
   val2 = digitalRead(Taster2);
   val3 = digitalRead(Taster3);
+  // Anzahl der gedrueckten Taster bestimmen
   anzahl = val1 + val2 +val3;
+
+  // wenn neuer und alter state nicht ubereinstimmen, Nachricht senden
   if (state1 != val1)
   {
     if(client.publish(topic,"Gruppe K") != 1)
@@ -98,6 +137,7 @@ void loop() {
     }
     used1 = 1;
   }
+
   if (state2 != val2)
   {
     if(client.publish(topic,String(anzahl).c_str()) != 1)
@@ -106,6 +146,7 @@ void loop() {
     }
     used2 = 1;
   }
+  
   if (state3 != val3)
   {
     if(val1 == 1)
