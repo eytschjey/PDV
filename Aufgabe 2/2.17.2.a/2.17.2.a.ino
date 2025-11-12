@@ -27,74 +27,74 @@ void loop() {
   int val3 = digitalRead(Taster3);
   if (val1 == 0 && val2 == 0 && val3 == 0)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,LOW);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,LOW);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,LOW);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,LOW);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 1 && val2 == 0 && val3 == 0)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,HIGH);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,LOW);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,HIGH);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,LOW);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 0 && val2 == 1 && val3 == 0)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,HIGH);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,LOW);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,HIGH);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,LOW);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 0 && val2 == 0 && val3 == 1)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,HIGH);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,LOW);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,HIGH);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,LOW);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 1 && val2 == 1 && val3 == 0)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,LOW);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,HIGH);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,LOW);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,HIGH);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 1 && val2 == 0 && val3 == 1)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,LOW);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,HIGH);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,LOW);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,HIGH);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 0 && val2 == 1 && val3 == 1)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,LOW);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,HIGH);
-    digtalWrite(LED3_1,LOW);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,LOW);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,HIGH);
+    digitalWrite(LED3_1,LOW);
+    digitalWrite(LED3_2,LOW);
   }
   else if (val1 == 1 && val2 == 1 && val3 == 1)
   {
-    digtalWrite(LED1_1,LOW);
-    digtalWrite(LED1_2,LOW);
-    digtalWrite(LED2_1,LOW);
-    digtalWrite(LED2_2,LOW);
-    digtalWrite(LED3_1,HIGH);
-    digtalWrite(LED3_2,LOW);
+    digitalWrite(LED1_1,LOW);
+    digitalWrite(LED1_2,LOW);
+    digitalWrite(LED2_1,LOW);
+    digitalWrite(LED2_2,LOW);
+    digitalWrite(LED3_1,HIGH);
+    digitalWrite(LED3_2,LOW);
   }
 }
