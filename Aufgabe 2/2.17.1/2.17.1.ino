@@ -49,6 +49,7 @@ void setup() {
       delay(2000);
     }
   }
+  pinMode(Taster1,INPUT);
 }
 
 void loop() {
