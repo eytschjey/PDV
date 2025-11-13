@@ -3,8 +3,8 @@
 #include <PubSubClient.h>
 
 // WLAN im SSTS Labor
-const char *ssid ="ITBahn";
-const char *password ="geheim007";
+const char *ssid ="ITBahn123";
+const char *password ="ITBahn12345";
 
 const char *broker ="141.72.191.235";
 const char *topic ="hello";
@@ -68,37 +68,19 @@ void loop() {
   time1 = 0;
 
   // Messung von Druckdauer und Intervall
-  if (buttonState != lastButtonState)
-  {
-    if (buttonState == 0)
-    {
-      pressTime = millis();
-    }
-    else
-    {
-      releaseTime = millis();
-      duration = releaseTime - pressTime;
-    }
-    lastButtonState = buttonState;
-  }
+
 
   // Sende MQTT Nachricht bei Tastendruck
-  while (buttonState == lastButtonState)
+  while (buttonState == 1)
   {
     // Kurz- und gedrückt unterscheiden
-    if (pressTime <= 100)
+   
+    if (millis() >= Timeout + Timer)
     {
-      client.publish(topic,"Hello STTS World");
+      Timer = millis();
+      client.publish(topic,"Hello STTS World von Gruppe K");
     }
-    // Bei gedrücktem Taster alle 500ms Nachricht senden
-    else
-    {
-      if (millis() >= Timeout + Timer)
-      {
-        Timer = millis();
-        client.publish(topic,"Hello STTS World");
-      }
-    }
+    
     buttonState = digitalRead(36);
   }
 }

@@ -24,8 +24,8 @@ Hz rot blinken!
 #include <PubSubClient.h>
 
 // WLAN im SSTS Labor
-const char *ssid ="ITBahn";
-const char *password ="geheim007";
+const char *ssid ="ITBahn123";
+const char *password ="ITBahn12345";
 
 const char *broker ="141.72.191.235";
 const char *topic ="hello";
@@ -61,6 +61,8 @@ int anzahl = 0;
 int failed = 0;
 long Timeout = 250;
 long Timer = 0;
+long Timeout1 = 2000;
+long Timer1 = 0;
 String Taster;
 
 WiFiClient espClient;
@@ -190,30 +192,33 @@ void loop() {
   // Wenn eine Nachricht gesendet wurde (used), 2 Sekunden warten bevor neue Nachricht gesendet wird
   if(used1 == 1 || used2 == 1 || used3 == 1)
   {
-    delay(2000);
-    if (used1 == 1)
+    if (millis() >= Timeout1 + Timer1)
     {
-      if(client.publish(topic,"Gruppe K") != 1)
+      Timer1 = millis();
+      if (used1 == 1)
       {
-        failed++;
+        if(client.publish(topic,"Gruppe K") != 1)
+        {
+          failed++;
+        }
+        used1 = 0;
       }
-      used1 = 0;
-    }
-    if (used2 == 1)
-    {
-      if(client.publish(topic,String(anzahl).c_str()) !=1)
+      if (used2 == 1)
       {
-        failed++;
+        if(client.publish(topic,String(anzahl).c_str()) !=1)
+        {
+          failed++;
+        }
+        used2 = 0;
       }
-      used2 == 0;
-    }
-    if (used3 == 1)
-    {
-      if(client.publish(topic,Taster.c_str()) != 1)
+      if (used3 == 1)
       {
-        failed++;
+        if(client.publish(topic,Taster.c_str()) != 1)
+        {
+          failed++;
+        }
+        used3 = 0;
       }
-      used3 == 0;
     }
   }
   
@@ -226,7 +231,7 @@ void loop() {
       if (millis() >= Timeout + Timer)
       {
         Timer = millis();
-        if (stateLED = LOW) stateLED = HIGH;
+        if (stateLED == LOW) stateLED = HIGH;
         else stateLED = LOW;
         digitalWrite(LED1_1,stateLED);
         digitalWrite(LED2_1,stateLED);
