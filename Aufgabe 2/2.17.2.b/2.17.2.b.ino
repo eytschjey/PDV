@@ -114,6 +114,7 @@ void setup() {
 }
 
 void loop() {
+  client.loop();
   // string Taster zuruecksetzen
   for(int i = 0; i<3; i++)
   {

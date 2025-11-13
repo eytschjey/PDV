@@ -63,6 +63,7 @@ void setup() {
 }
 
 void loop() {
+  client.loop();
   // Messung des Tasterzustands an Pin 36
   buttonState = digitalRead(36);
   time1 = 0;
