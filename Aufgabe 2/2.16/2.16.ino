@@ -11,6 +11,7 @@ Vermeiden Sie die Verwendung des „delay()“ Befehls!
 // Definieren der GPIO Pins für Taster und LED
 int Taster = 36;
 int LED = 21;
+int LED1 =26;
 int val = 0;
 long Timeout = 500;
 long Timer = 0;
@@ -19,7 +20,9 @@ int state = LOW;
 void setup() {
   // Definieren des Tasters als Input und der LED als Output
   pinMode(Taster,INPUT);
+  pinMode(LED1,OUTPUT);
   pinMode(LED,OUTPUT);
+  digitalWrite(LED1,LOW);
 }
 
 void loop() {
