@@ -1,13 +1,16 @@
 const int LED = 21;
+const int LED1 = 26;
 void setup() {
   // put your setup code here, to run once:
   pinMode(LED,OUTPUT);
+  pinMode(LED1,OUTPUT);
+  digitalWrite(LED1,LOW);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  analogWrite(LED,HIGH);
+  digitalWrite(LED,HIGH);
   delay(500);
-  analogWrite(LED,LOW);
+  digitalWrite(LED,LOW);
   delay(500);
 }
