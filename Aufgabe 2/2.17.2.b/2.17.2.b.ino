@@ -194,30 +194,33 @@ void loop() {
   // Wenn eine Nachricht gesendet wurde (used), 2 Sekunden warten bevor neue Nachricht gesendet wird
   if(used1 == 1 || used2 == 1 || used3 == 1)
   {
-    
-    if (used1 == 1)
+    if (millis() >= Timeout1 + Timer1)
     {
-      if(client.publish(topic,"Gruppe K") != 1)
+      Timer1 = millis();
+      if (used1 == 1)
       {
-        failed++;
+        if(client.publish(topic,"Gruppe K") != 1)
+        {
+          failed++;
+        }
+        used1 = 0;
       }
-      used1 = 0;
-    }
-    if (used2 == 1)
-    {
-      if(client.publish(topic,String(anzahl).c_str()) !=1)
+      if (used2 == 1)
       {
-        failed++;
+        if(client.publish(topic,String(anzahl).c_str()) !=1)
+        {
+          failed++;
+        }
+        used2 = 0;
       }
-      used2 = 0;
-    }
-    if (used3 == 1)
-    {
-      if(client.publish(topic,Taster.c_str()) != 1)
+      if (used3 == 1)
       {
-        failed++;
+        if(client.publish(topic,Taster.c_str()) != 1)
+        {
+          failed++;
+        }
+        used3 = 0;
       }
-      used3 = 0;
     }
   }
   
