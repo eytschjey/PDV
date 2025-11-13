@@ -4,6 +4,9 @@ blinken lässt.
 
 Verwenden Sie in diesem einfachen Programm die Funktion „delay(msec)“!
 
+Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
+*/
+
 
 //Verwendung der eingebauten LED
 void setup() {

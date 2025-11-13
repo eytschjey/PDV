@@ -1,4 +1,6 @@
 // Aufgabe 2.17.1: MQTT Nachricht bei Tastendruck senden
+
+// Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
 #include <WiFi.h>
 #include <PubSubClient.h>
 

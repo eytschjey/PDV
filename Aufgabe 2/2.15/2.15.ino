@@ -1,6 +1,9 @@
 /* Aufgabe 2.15 - ESP32 Switch
 Erstellen Sie ein Programm für das STTS-ESP32-System, das die Position eines Tasters über 
 die serielle Verbindung ausgibt. 
+
+
+Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
 */
 
 // Definieren des GPIO Pins für den Taster

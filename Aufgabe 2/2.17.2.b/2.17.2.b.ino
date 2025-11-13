@@ -17,6 +17,8 @@ die Liste „[T1, T2]“
 - Wenn das Senden der Nachricht fehlschlägt sollen alle LEDs der Boards mit 2 
 Hz rot blinken!  
 
+Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
+
 */
 
 
@@ -114,7 +116,6 @@ void setup() {
 }
 
 void loop() {
-  client.loop();
   // string Taster zuruecksetzen
   for(int i = 0; i<3; i++)
   {
@@ -193,33 +194,30 @@ void loop() {
   // Wenn eine Nachricht gesendet wurde (used), 2 Sekunden warten bevor neue Nachricht gesendet wird
   if(used1 == 1 || used2 == 1 || used3 == 1)
   {
-    if (millis() >= Timeout1 + Timer1)
+    
+    if (used1 == 1)
     {
-      Timer1 = millis();
-      if (used1 == 1)
+      if(client.publish(topic,"Gruppe K") != 1)
       {
-        if(client.publish(topic,"Gruppe K") != 1)
-        {
-          failed++;
-        }
-        used1 = 0;
+        failed++;
       }
-      if (used2 == 1)
+      used1 = 0;
+    }
+    if (used2 == 1)
+    {
+      if(client.publish(topic,String(anzahl).c_str()) !=1)
       {
-        if(client.publish(topic,String(anzahl).c_str()) !=1)
-        {
-          failed++;
-        }
-        used2 = 0;
+        failed++;
       }
-      if (used3 == 1)
+      used2 = 0;
+    }
+    if (used3 == 1)
+    {
+      if(client.publish(topic,Taster.c_str()) != 1)
       {
-        if(client.publish(topic,Taster.c_str()) != 1)
-        {
-          failed++;
-        }
-        used3 = 0;
+        failed++;
       }
+      used3 = 0;
     }
   }
   

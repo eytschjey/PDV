@@ -6,6 +6,8 @@ Schreiben Sie ein Programm, das den Text "Hello STTS Arduino World"
 Frage 3:Woran erkennen Sie, dass gerade ein neues Programm hochgeladen wird?
 Am Blinken der internen LED während des Uploads.
 
+
+Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
 */
 
 // Initialisierung des seriellen Monitors

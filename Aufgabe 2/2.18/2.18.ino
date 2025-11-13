@@ -7,6 +7,7 @@ Helligkeit der LED ändert!
 Die Auflösung des PWM Ausgangs kann man durch die Funktion analogWriteRange() verändern.
 Standardrange ist 255 (8Bit). Setzt man die Range auf 10Bit, kann man 1023 Stufen ansteuern.
 
+Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
 
 */
 

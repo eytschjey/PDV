@@ -1,5 +1,6 @@
 // Aufgabe 2.17.2.a
 // Steuerung von 3 LED-Paaren über 3 Taster
+//Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
 
 
 // Initialisierung der GPIO Pins für LEDs und Taster

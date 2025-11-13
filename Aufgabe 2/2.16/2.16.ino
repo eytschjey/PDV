@@ -5,6 +5,9 @@ Tasters die LED 1 mit einer Frequenz von 1 Hertz blinkt oder ganz ausschaltet! (
 Datenblatt ESP32) 
 
 Vermeiden Sie die Verwendung des „delay()“ Befehls! 
+
+
+Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
 */
 
 
