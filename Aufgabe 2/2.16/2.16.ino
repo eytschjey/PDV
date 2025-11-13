@@ -13,7 +13,7 @@ int Taster = 36;
 int LED = 21;
 int LED1 =26;
 int val = 0;
-long Timeout = 500;
+long Timeout = 5000;
 long Timer = 0;
 int state = LOW;
 
@@ -46,5 +46,6 @@ void loop() {
   {
     digitalWrite(LED,LOW);
     state = LOW;
+    Timer = 0;
   }
 }

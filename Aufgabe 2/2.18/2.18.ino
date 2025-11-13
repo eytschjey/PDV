@@ -40,7 +40,7 @@ void loop() {
   // Falls Taster 1 gedrückt ist, Helligkeit auf 100 (von 255) setzen
   if (in1 == 1 && in2 == 0 && in3 == 0)
   {
-    analogWrite(LED1,100);
+    analogWrite(LED1,300);
   }
   // Falls Taster 1 und 2 gedrückt sind, Helligkeit auf 200 setzen
   else if (in1 == 1 && in2 == 1 && in3 == 0)
