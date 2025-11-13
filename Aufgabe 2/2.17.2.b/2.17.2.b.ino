@@ -24,8 +24,8 @@ Hz rot blinken!
 #include <PubSubClient.h>
 
 // WLAN im SSTS Labor
-const char *ssid ="ITBahn";
-const char *password ="geheim007";
+const char *ssid ="ITBahn123";
+const char *password ="ITBahn12345";
 
 const char *broker ="141.72.191.235";
 const char *topic ="hello";
