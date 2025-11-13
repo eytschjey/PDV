@@ -1,3 +1,6 @@
+// Verwendung einer externen LED
+// Hinweis: Die Vollständige Dokumentation finden sie in "Aufgabe 2 Team K.pdf"
+
 const int LED = 21;
 const int LED1 = 26;
 void setup() {

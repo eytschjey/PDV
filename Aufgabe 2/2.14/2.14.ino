@@ -21,20 +21,6 @@ void loop() {
   delay(500);
 }
 
-*/
 
-// Verwendung einer externen LED
-// Definieren der GPIO Pin für die LED
-const int LED = 21;
-// Definieren der LED als Output
-void setup() {
-  pinMode(LED,OUTPUT);
-}
 
-// LED im Sekundentakt blinken lassen
-void loop() {
-  analogWrite(LED,HIGH);
-  delay(500);
-  analogWrite(LED,LOW);
-  delay(500);
-}
+
