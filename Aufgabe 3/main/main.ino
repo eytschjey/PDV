@@ -90,6 +90,7 @@ void connection_loss()
   digitalWrite(LED3_2,HIGH);
   digitalWrite(LED2_1,LOW);
   digitalWrite(LED3_1,LOW);
+  client.publish("ESP32_[K]/Online", "Online");
 }
 // put function declarations here:
 
