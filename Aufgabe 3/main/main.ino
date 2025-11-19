@@ -26,8 +26,8 @@ String topic1 = "";
 String topic2 = "";
 
 // WLAN im SSTS Labor
-const char *ssid ="LAPTOP_LUCA 7010";
-const char *password ="7@gP8722";
+const char *ssid ="ITBahn123";
+const char *password ="ITBahn12345";
 
 const char *broker ="141.72.191.235";
 const int port = 1883;
@@ -178,8 +178,8 @@ void loop() {
     topic2 = "ESP32_[K]/RFID[2]/";
     topic2 += r2;
     client.publish(topic2.c_str(), r2.c_str());
-    rfid1.PICC_HaltA();
-    rfid1.PCD_StopCrypto1();
+    rfid2.PICC_HaltA();
+    rfid2.PCD_StopCrypto1();
   }
 
 }
